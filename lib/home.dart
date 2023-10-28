@@ -8,16 +8,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final judul = TextEditingController();
   final deskripsi = TextEditingController();
-  bool isLoading = false;
   final _formState = GlobalKey<FormState>();
-  final LinearGradient _gradient = LinearGradient(
-    colors: [
-      '4599DB'.toColor(),
-      '62CDCB'.toColor(),
-    ],
-    begin: Alignment.topRight,
-    end: Alignment.centerLeft,
-  );
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -57,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (_, snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data!.docs.isNotEmpty) {
+                    // var data = snapshot.data!.docs;
                     var data = snapshot.data!.docs[0];
                     judul.text = data['judul'];
                     deskripsi.text = data['deskripsi'];
@@ -292,62 +284,65 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         ),
                                                         SizedBox(height: 10),
                                                         GestureDetector(
-                                                          onTap: () async {
-                                                            if (_formState
-                                                                .currentState!
-                                                                .validate()) {
-                                                              setState(() {
-                                                                isLoading = true;
-                                                              });
-                                                              // Your update logic here
-                                                            }
-                                                          },
-                                                          child: Container(
-                                                            alignment: Alignment.center,
-                                                            width:
-                                                            MediaQuery.of(context)
-                                                                .size
-                                                                .width,
-                                                            height: 48,
-                                                            decoration: BoxDecoration(
-                                                              borderRadius:
-                                                              BorderRadius.circular(8),
-                                                              gradient: LinearGradient(
-                                                                colors: [
-                                                                  '4599DB'.toColor(),
-                                                                  '62CDCB'.toColor(),
-                                                                ],
-                                                                begin: Alignment.bottomRight,
-                                                                end: Alignment.centerLeft,
-                                                              ),
-                                                            ),
-                                                            child: (isLoading)
-                                                                ? Text(
-                                                              'Update',
-                                                              style:
-                                                              GoogleFonts.poppins()
-                                                                  .copyWith(
-                                                                fontSize: 15,
-                                                                color:
-                                                                'FFFFFF'.toColor(),
-                                                                fontWeight: FontWeight.bold,
-                                                              ),
-                                                            )
-                                                                : Center(
-                                                              child: SizedBox(
-                                                                width: 20,
-                                                                height: 20,
-                                                                child:
-                                                                CircularProgressIndicator(
-                                                                  strokeWidth: 2.5,
-                                                                  color:
-                                                                  'FFFFFF'.toColor(),
+                                                              onTap: () async {
+                                                                if (_formState
+                                                                    .currentState!
+                                                                    .validate()) {
+                                                                  snapshot
+                                                                      .data!
+                                                                      .docs[0]
+                                                                      .reference
+                                                                      .update({
+                                                                    'judul': judul
+                                                                        .text,
+                                                                    'deskripsi':
+                                                                        deskripsi
+                                                                            .text,
+                                                                  });
+                                                                  Navigator.pop(context);
+                                                                }
+                                                              },
+                                                              child: Container(
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
+                                                                width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 48,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8),
+                                                                  gradient:
+                                                                      LinearGradient(
+                                                                    colors: [
+                                                                      '4599DB'
+                                                                          .toColor(),
+                                                                      '62CDCB'
+                                                                          .toColor(),
+                                                                    ],
+                                                                    begin: Alignment
+                                                                        .bottomRight,
+                                                                    end: Alignment
+                                                                        .centerLeft,
+                                                                  ),
+                                                                ),
+                                                                child: Text(
+                                                                  'Update',
+                                                                  style:
+                                                                  GoogleFonts.poppins().copyWith(
+                                                                    fontSize: 15,
+                                                                    color: 'FFFFFF'.toColor(),
+                                                                    fontWeight: FontWeight.bold,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      ],
+                                                          ],
                                                     ),
                                                   ),
                                                 );
