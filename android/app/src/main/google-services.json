@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1005845652020",
+    "project_id": "ozora-a39fc",
+    "storage_bucket": "ozora-a39fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005845652020:android:1edaa2d1b33a23231a6061",
+        "android_client_info": {
+          "package_name": "com.ozora.ozoracompany"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcSu7M0B01BdD08dnIG5KqZyWCMuj4JkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
