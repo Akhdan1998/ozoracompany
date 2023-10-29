@@ -12,12 +12,8 @@ class _MyHomePageState extends State<MyHomePage> {
   late AnimationController _controller;
   final List<Map<String, dynamic>> _items = List.generate(
       1,
-          (index) => {
-        // "id": index,
-        // "title": "Contact",
-        // "content":
-        // "This is the main content of item $index. It is very long and you have to expand the tile to see it."
-      });
+          (index) => {});
+
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -65,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 end: Alignment.bottomLeft,
               ),
             ),
-            // padding: EdgeInsets.only(left: 20, right: 20),
             child: StreamBuilder<QuerySnapshot>(
               stream: users.snapshots(),
               builder: (_, snapshot) {
@@ -82,10 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             width: MediaQuery.of(context).size.width,
                             height: 30,
                             decoration: BoxDecoration(
-                              // borderRadius: BorderRadius.only(
-                              //   topLeft: Radius.circular(20),
-                              //   topRight: Radius.circular(20),
-                              // ),
                               gradient: LinearGradient(
                                 colors: [
                                   '4599DB'.toColor(),
