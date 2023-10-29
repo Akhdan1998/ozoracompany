@@ -150,6 +150,8 @@ class _createState extends State<create> {
                 'judul': judul.text,
                 'deskripsi': deskripsi.text,
               });
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setString('users', users.id);
               Get.to(MyHomePage());
             } else {}
           },
