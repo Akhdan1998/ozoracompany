@@ -71,9 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (_, snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data!.docs.isNotEmpty) {
-                    var data = snapshot.data!.docs[0];
-                    judul.text = data['judul'];
-                    deskripsi.text = data['deskripsi'];
+                    // var data = snapshot.data!.docs[0];
+                    // judul.text = data['judul'];
+                    // deskripsi.text = data['deskripsi'];
                     return SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
@@ -103,19 +103,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 gradient: LinearGradient(
                                   colors: [
-                                    // '1F4247'.toColor(),
-
-                                    // '0D1D23'.toColor(),
-                                    // '09141A'.toColor(),
                                     '1F4247'.toColor(),
-
                                     '1F4247'.toColor(),
-
                                   ],
-                                  // begin: Alignment.bottomLeft,
                                   end: Alignment.bottomLeft,
                                 ),
-                                // color:                                     '1F4247'.toColor(),
                               ),
                             ),
                           ),
