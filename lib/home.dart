@@ -225,6 +225,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                             IconButton(
                                               onPressed: () {
+
+                                                setState(() {
+                                                  judul.text = e.get('judul') ?? '';
+                                                  deskripsi.text = e.get('deskripsi') ?? '';
+                                                });
+
                                                 showModalBottomSheet<void>(
                                                   useSafeArea: true,
                                                   isScrollControlled: true,
